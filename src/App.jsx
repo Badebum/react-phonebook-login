@@ -1,62 +1,55 @@
-import React, { Component } from 'react';
-import ContactList from './components/ContactList/ContactList';
-import ContactEditor from './components/ContactEditor';
-import Filter from './components/Filter';
-import styles from './App.module.css';
+import React, { Component, lazy, Suspense } from 'react';
+import AppBar from './HeaderMenu/AppBar';
+import { Switch, Route } from 'react-router-dom';
+import * as authOperations from './redux/auth/auth-operations';
 import { connect } from 'react-redux';
-import * as operatimport from './redux/contact/contact.operations';
-import {getLoading} from './redux/contact/contact-selector'
+const HomeView = lazy(() =>
+  import('./views/HomeView/HomeView.jsx' /* webpackChunkName: "home-view" */),
+);
 
-// import Modal from './components/BackDrop/Modal';
+const RegisterView = lazy(() =>
+  import(
+    './views/RegisterView/RegisterView.jsx' /* webpackChunkName: "register-view" */
+  ),
+);
+
+const LoginView = lazy(() =>
+  import(
+    './views/LoginView/LoginView.jsx' /* webpackChunkName: "login-view" */
+  ),
+);
+
+const ContactView = lazy(() =>
+  import(
+    './views/ContactView/ContactView.jsx' /* webpackChunkName: "Contact-view" */
+  ),
+);
 
 class App extends Component {
-  state = {
-    showModal: false,
-  };
-
-  // toggleModal = () => {
-  //   this.setState(({showModal}) => ({showModal: !showModal}))
-  // }
-
   componentDidMount() {
-    this.props.fetchContact();
+    this.props.onGetCurrentUser();
   }
 
   render() {
-    // const { showModal } = this.state;
-
     return (
-      <div className={styles.container}>
-        {/* <button type="button" onClick={this.toggleModal}>
-          Open modal
-        </button> */}
-        {/* {showModal && (
-          <Modal onClose={this.toggleModal}>
-            <h1>this Modal content</h1>
-            <button type="button" onClick={this.toggleModal}>
-              Close modal
-            </button>
-          </Modal>
-        )} */}
+      <>
+        <AppBar />
 
-        <h1>Phonebook</h1>
-        <ContactEditor />
-        {this.props.isLoadingTodos && <h1>Loading...</h1>}
-        <h2>Contacts</h2>
-        <Filter />
-
-        <ContactList />
-      </div>
+        <Suspense fallback={<p>Loading in progress...</p>}>
+          <Switch>
+            <Route exact path="/" component={HomeView} />
+            <Route path={'/register'} component={RegisterView} />
+            <Route path={'/login'} component={LoginView} />
+            <Route path={'/contacts'} component={ContactView} />
+          </Switch>
+        </Suspense>
+      </>
     );
   }
 }
 
-const mapStateToPromps = state => ({
-  isLoadingTodos: getLoading(state),
-});
+const mapDispatchToProps = {
+  onGetCurrentUser: authOperations.getCurrentUser,
+};
 
-const mapDispatchToPtops = dispatch => ({
-  fetchContact: () => dispatch(operatimport.fetchContact()),
-});
-
-export default connect(mapStateToPromps, mapDispatchToPtops)(App);
+export default connect(null, mapDispatchToProps)(App);

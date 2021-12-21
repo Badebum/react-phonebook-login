@@ -11,17 +11,17 @@ import {
   deleteContactError,
 } from './contact-actions';
 
-axios.defaults.baseURL = 'https://61b07b553c954f001722a3ec.mockapi.io/contacts';
+// axios.defaults.baseURL = 'https://61b07b553c954f001722a3ec.mockapi.io/contacts';
 
 export const fetchContact = () => async dispatch => {
   dispatch(fetchContactRequest());
 
-try {
-  const { data } = await axios.get('/contacts');
-  dispatch(fetchContactSuccess(data));
-} catch (error) {
-  dispatch(fetchContactError(error));
-}
+  try {
+    const { data } = await axios.get('/contacts');
+    dispatch(fetchContactSuccess(data));
+  } catch (error) {
+    dispatch(fetchContactError(error));
+  }
 
   // axios
   //   .get('/contacts')
