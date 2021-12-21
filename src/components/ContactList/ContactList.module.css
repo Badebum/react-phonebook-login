@@ -1,0 +1,26 @@
+.button {
+  margin-right: 2px;
+  height: 30px;
+  border: none;
+  border-radius: 10px;
+  border-style: outset;
+  cursor: pointer;
+}
+
+.list {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+}
+
+.container {
+  border: 1px solid black;
+  border-radius: 20px;
+  margin: 10px auto;
+  padding: 10px;
+  color: aliceblue;
+}
+
+p {
+  margin-top: 5px;
+}
