@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import styles from './Contact.module.css';
 import * as operations from '../../redux/contact/contact.operations';
+import * as contactsSelectors from '../../redux/contact/contact-selector';
 
 class ContactEditor extends Component {
   state = {
@@ -22,6 +23,18 @@ class ContactEditor extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
+
+    const { name, number } = this.state;
+    const { contacts } = this.props;
+
+    if (contacts.some(elm => elm.name.toLowerCase() === name.toLowerCase())) {
+      return alert(`${name} is already in contacts`);
+    }
+    if (
+      contacts.some(elm => elm.number.toLowerCase() === number.toLowerCase())
+    ) {
+      return alert(`${number} is already in contacts`);
+    }
 
     if (this.state.name !== '') {
       this.props.addContact(this.state);
@@ -67,8 +80,12 @@ class ContactEditor extends Component {
   }
 }
 
+const mapStateToProps = state => ({
+  contacts: contactsSelectors.getAllContacts(state),
+});
+
 const mapDispatchToProps = dispatch => ({
   addContact: contactForm => dispatch(operations.addContact(contactForm)),
 });
 
-export default connect(null, mapDispatchToProps)(ContactEditor);
+export default connect(mapStateToProps, mapDispatchToProps)(ContactEditor);

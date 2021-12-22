@@ -1,0 +1,36 @@
+.input_menu {
+  border: 1px solid black;
+  border-radius: 10px;
+  width: 350px;
+  background: rgba(0, 0, 0, 0.247);
+  color: white;
+}
+
+.title {
+  color: white;
+}
+
+.input_item {
+  display: flex;
+  flex-direction: column;
+}
+
+.form_label {
+  margin: 0 0 10px 10px;
+}
+
+.input {
+  border-radius: 5px;
+  width: 250px;
+  margin: 0 0 10px 10px;
+}
+
+.form_label:first-child {
+  margin-top: 5px;
+}
+
+.sbt_button {
+  border-radius: 5px;
+
+  margin: 0 0 10px 10px;
+}

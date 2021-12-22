@@ -1,0 +1,17 @@
+.cont_container {
+  display: flex;
+  justify-content: space-around;
+  align-items: baseline;
+}
+
+.cont_list h2 {
+  color: white;
+  display: inline;
+  margin-right: 100px;
+}
+
+.cont_form h2 {
+  color: white;
+  margin-left: 10px;
+  margin-bottom: 15px;
+}

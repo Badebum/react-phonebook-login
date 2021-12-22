@@ -1,0 +1,15 @@
+body {
+  background-color: rgba(121, 88, 38, 0.836);
+  background-image: url('./pexels-pixabay-267586.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.Container {
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  height: 100vh;
+}

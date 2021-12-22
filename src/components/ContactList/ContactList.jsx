@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styles from './ContactList.module.css';
 import * as operations from '../../redux/contact/contact.operations';
 import { connect } from 'react-redux';
-import {getVisibleContacts} from '../../redux/contact/contact-selector'
+import { getVisibleContacts } from '../../redux/contact/contact-selector';
 
 const ContactList = ({ contact, deleteContact }) => (
   <ul className={styles.container}>

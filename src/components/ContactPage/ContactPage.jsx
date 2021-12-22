@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
-import ContactList from '../../components/ContactList/ContactList';
+import ContactList from '../../components/ContactList';
 import ContactEditor from '../../components/ContactEditor';
 import Filter from '../../components/Filter';
-import styles from './ContactView.module.css';
 
 import { connect } from 'react-redux';
 import * as operatimport from '../../redux/contact/contact.operations';
 import { getLoading } from '../../redux/contact/contact-selector';
+import styles from './ContactPage.module.css';
 
 // import Modal from './components/BackDrop/Modal';
 
-class AppBar extends Component {
+class ContactPage extends Component {
   state = {
     showModal: false,
   };
@@ -27,7 +27,7 @@ class AppBar extends Component {
     // const { showModal } = this.state;
 
     return (
-      <div>
+      <div className={styles.cont_container}>
         {/* <button type="button" onClick={this.toggleModal}>
           Open modal
         </button> */}
@@ -39,14 +39,18 @@ class AppBar extends Component {
             </button>
           </Modal>
         )} */}
+        {/* {this.props.isLoadingTodos && <h1>Loading...</h1>} */}
 
-        <h1>Phonebook</h1>
-        <ContactEditor />
-        {this.props.isLoadingTodos && <h1>Loading...</h1>}
-        <h2>Contacts</h2>
-        <Filter />
+        <div className={styles.cont_form}>
+          <h2>Add contact</h2>
+          <ContactEditor />
+        </div>
 
-        <ContactList />
+        <div className={styles.cont_list}>
+          <h2>Contacts</h2>
+          <Filter />
+          <ContactList />
+        </div>
       </div>
     );
   }
@@ -60,4 +64,4 @@ const mapDispatchToPtops = dispatch => ({
   fetchContact: () => dispatch(operatimport.fetchContact()),
 });
 
-export default connect(mapStateToPromps, mapDispatchToPtops)(AppBar);
+export default connect(mapStateToPromps, mapDispatchToPtops)(ContactPage);

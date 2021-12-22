@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+// import styles from './AuthNav.module.css';
 
 const styles = {
   link: {
@@ -7,28 +8,33 @@ const styles = {
     textDecoration: 'none',
     padding: 12,
     fontWeight: 700,
-    color: '#2A363B',
+    color: '#fff',
   },
   activeLink: {
-    color: '#E84A5F',
+    color: '#ff5100',
   },
 };
 
-const Navigaton = () => (
+const AuthNav = () => (
   <div>
-    <NavLink to="/" exact style={styles.link} activeStyle={styles.activeLink}>
-      Главная
-    </NavLink>
-
     <NavLink
-      to="/contacts"
+      to="/register"
       exact
       style={styles.link}
       activeStyle={styles.activeLink}
     >
-      Телефонная книга
+      Регистрация
+    </NavLink>
+
+    <NavLink
+      to="/login"
+      exact
+      style={styles.link}
+      activeStyle={styles.activeLink}
+    >
+      Логин
     </NavLink>
   </div>
 );
 
-export default Navigaton;
+export default AuthNav;

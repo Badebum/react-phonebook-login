@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-
+import styles from './SingnupForm.module.css';
 import * as authOperations from '../../redux/auth/auth-operations';
 
 class SignupForm extends Component {
@@ -31,51 +31,47 @@ class SignupForm extends Component {
     const { name, email, password } = this.state;
 
     return (
-      <div className="UserMenu">
-        <h2 className="header-title">Registration Page</h2>
+      <div>
+        <h2 className={styles.title}>Registration Page</h2>
 
-        <form onSubmit={this.handleSubmit}>
-          <div className="mb-3">
-            <label htmlFor="name" className="form-label">
+        <form onSubmit={this.handleSubmit} className={styles.input_menu}>
+          <div className={styles.input_item}>
+            <label htmlFor="name" className={styles.form_label}>
               Name
             </label>
 
             <input
               type="text"
-              className="form-control"
+              className={styles.input}
               name="name"
               value={name}
               onChange={this.handleChange}
             />
           </div>
 
-          <div className="mb-3">
-            <label htmlFor="email" className="form-label">
+          <div className={styles.input_item}>
+            <label htmlFor="email" className={styles.form_label}>
               Email address
             </label>
 
             <input
               type="email"
-              className="form-control"
+              className={styles.input}
               aria-describedby="emailHelp"
               name="email"
               value={email}
               onChange={this.handleChange}
             />
-
-            <div id="emailHelp" className="form-text">
-              We'll never share your email with anyone else.
-            </div>
           </div>
 
-          <div className="mb-3">
-            <label htmlFor="password" className="form-label">
+          <div className={styles.input_item}>
+            <label htmlFor="password" className={styles.form_label}>
               Password
             </label>
 
             <input
               type="password"
-              className="form-control"
+              className={styles.input}
               placeholder={'More than 7 symbols'}
               name="password"
               value={password}
@@ -83,7 +79,7 @@ class SignupForm extends Component {
             />
           </div>
 
-          <button type="submit" className="btn btn-primary">
+          <button type="submit" className={styles.sbt_button}>
             Submit
           </button>
         </form>
