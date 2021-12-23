@@ -26,7 +26,7 @@ class LoginView extends Component {
     const { email, password } = this.state;
 
     return (
-      <div>
+      <div className={styles.container}>
         <h1 className={styles.title}>Страница логина</h1>
 
         <form

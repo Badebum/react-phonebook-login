@@ -31,7 +31,7 @@ class SignupForm extends Component {
     const { name, email, password } = this.state;
 
     return (
-      <div>
+      <div className={styles.container}>
         <h2 className={styles.title}>Registration Page</h2>
 
         <form onSubmit={this.handleSubmit} className={styles.input_menu}>

@@ -23,4 +23,13 @@
   border-radius: 10px;
   padding: 2px 7px;
   cursor: pointer;
+  background: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.sub_btn:hover,
+.sub_btn:focus {
+  background: rgba(0, 0, 0, 0.301);
+  color: white;
 }

@@ -1,0 +1,26 @@
+.container {
+  display: flex;
+  align-items: center;
+  color: white;
+}
+
+.avatar {
+  margin-right: 4px;
+}
+
+.name {
+  font-weight: 700px;
+  margin-right: 12px;
+}
+
+.btn {
+  background: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn:hover,
+.btm:focus {
+  background: rgba(0, 0, 0, 0.301);
+  color: white;
+}
